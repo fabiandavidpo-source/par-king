@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>par-king</title>
+  <meta name="theme-color" content="#15112B">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  
+  <link rel="stylesheet" href="./assets/styles.css">
+  <script>
+    (function () {
+      function pickLanguage(candidates, supported = ['es', 'en'], fallback = 'es') {
+  for (const candidate of candidates || []) {
+    const base = String(candidate).toLowerCase().split(/[-_]/)[0];
+    if (supported.indexOf(base) !== -1) return base;
+  }
+  return fallback;
+}
+      var supported = ["es","en"];
+      var saved = null;
+      try { saved = localStorage.getItem('par-king.lang'); } catch (e) {}
+      var preferred = (navigator.languages && navigator.languages.length ? Array.prototype.slice.call(navigator.languages) : [navigator.language]);
+      var lang = supported.indexOf(saved) !== -1 ? saved : pickLanguage(preferred, supported, 'es');
+      location.replace('./' + lang + '/index.html');
+    })();
+  </script>
+</head>
+<body class="root">
+  <main class="root-box"><img src="./assets/logo.svg" alt="" width="72" height="67"><p class="root-name">par-<span>king</span></p><p class="root-links"><a href="./es/index.html" hreflang="es" lang="es">Español</a> · <a href="./en/index.html" hreflang="en" lang="en">English</a></p></main>
+</body>
+</html>
